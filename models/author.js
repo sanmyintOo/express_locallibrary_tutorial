@@ -27,6 +27,20 @@ AuthorSchema
   return (moment(this.date_of_death).format('MMMM Do, YYYY') + " - " + moment(this.date_of_birth).format('MMMM Do, YYYY')).toString();
 });
 
+//Virtual for author date of birth
+AuthorSchema
+.virtual('date_of_birth_formatted')
+.get(function(){
+  return moment(this.date_of_birth).format('YYYY-MM-DD');
+});
+
+// Virtual for author date of death
+AuthorSchema
+.virtual('date_of_death_formatted')
+.get(function(){
+  return moment(this.date_of_death).format('YYYY-MM-DD');
+});
+
 // Virtual for author's URL
 AuthorSchema
 .virtual('url')
